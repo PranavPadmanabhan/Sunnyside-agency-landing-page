@@ -13,16 +13,14 @@ import cone from '../src/assets/mobile/image-gallery-cone.jpg';
 import sugar from '../src/assets/mobile/image-gallery-sugar-cubes.jpg';
 import orange from '../src/assets/mobile/image-gallery-orange.jpg';
 import bottle from '../src/assets/mobile/image-gallery-milkbottles.jpg';
-import fb from '../src/assets/icon-facebook.svg';
-import insta from '../src/assets/icon-instagram.svg';
-import pinterest from '../src/assets/icon-pinterest.svg';
-import twitter from '../src/assets/icon-twitter.svg';
+
 
 
 
 function App() {
 
-  const [drawerVisibility, setDrawerVisibility] = useState(false)
+  const [drawerVisibility, setDrawerVisibility] = useState(false);
+  const [active, setactive] = useState("About")
 
   return (
     <div className="App">
@@ -42,7 +40,14 @@ function App() {
     <div className="header">
     <div className="header-items">
     <img src={logo} alt="" className="logo" />
+    
     {!drawerVisibility && (<img src={menu} onClick={() => setDrawerVisibility(true)} alt="menu" className="menu" />)}
+    <div className="navbar-items">
+    <a onClick={() => setactive("About")} className={active == "About"?"active":'links'} href="#about">About</a>
+    <a onClick={() => setactive("Services")} className={active == "Services"?"active":'links'} href="#services">Services</a>
+    <a onClick={() => setactive("Projects")}  className={active == "Projects"?"active":'links'} href="#projects">Projects</a>
+    <a onClick={() => setactive("Contact")} className={active == "Contact"?"active":'links'} href="#footer">Contact</a>
+    </div>
     </div>
     <div className="content">
     <span className="content-text">WE ARE CREATIVES</span>
@@ -66,6 +71,7 @@ function App() {
     <span className="link">Learn More</span>
     </div>
     </div>
+    <div className="row">
     <div className="design">
     <span className="heading-design">Graphic design</span>
     <p className="text-design">Great design makes you memorable. We deliver artwork that underscores your brand message and captures potential clients’ attention.</p>
@@ -73,6 +79,7 @@ function App() {
     <div className="orange">
     <span className="heading-orange">Photography</span>
     <p className="text-orange">Increase your credibility by getting the most stunning, high-quality photos that improve your business image.</p>
+    </div>
     </div>
     </div>
     <span className='clients'>CLIENT TESTIMONIALS</span>
@@ -104,16 +111,16 @@ function App() {
     </div>
     <div className="footer" id='footer'>
     <div className="footer-logo"></div>
-    <div className="row">
+    <div className="items-row">
     <span className="footer-items">About</span>
     <span className="footer-items">Services</span>
     <span className="footer-items">Projects</span>
     </div>
     <div className="socialMedia-row">
-    <img src={fb} alt="" className="icons" />
-    <img src={insta} alt="" className="icons" />
-    <img src={twitter} alt="" className="icons" />
-    <img src={pinterest} alt="" className="icons" />
+    <div  className="icons-fb" ></div>
+    <div  className="icons-insta" ></div>
+    <div  className="icons-twitter" ></div>
+    <div  className="icons-pin" ></div>
     </div>
     </div>
     </div>
