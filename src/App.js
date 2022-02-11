@@ -20,7 +20,25 @@ import bottle from '../src/assets/mobile/image-gallery-milkbottles.jpg';
 function App() {
 
   const [drawerVisibility, setDrawerVisibility] = useState(false);
-  const [active, setactive] = useState("About")
+  const [active, setactive] = useState("Home")
+
+  window.addEventListener("scroll",(e) => {
+    var y = window.scrollY;
+    if (y < 500 && y > 0) {
+      setactive("Home")
+    } 
+    else if(y > 500 && y < 2000) {
+      setactive("Services")
+    }
+    else if(y > 2000 && y < 2700) {
+      setactive("About")
+
+    }
+    else if(y > 2700 && y < 4600) {
+      setactive("Projects")
+
+    }
+  })
 
   return (
     <div className="App">
@@ -30,6 +48,7 @@ function App() {
     <img src={close} onClick={() => setDrawerVisibility(false)} alt="" />
     </div>
       <div className="options">
+      <a onClick={() => setDrawerVisibility(false)} className='contact' href="#content">Home</a>
       <a onClick={() => setDrawerVisibility(false)} className='contact' href="#about">About</a>
       <a onClick={() => setDrawerVisibility(false)} className='contact' href="#services">Services</a>
       <a onClick={() => setDrawerVisibility(false)} className='contact' href="#projects">Projects</a>
@@ -43,13 +62,14 @@ function App() {
     
     {!drawerVisibility && (<img src={menu} onClick={() => setDrawerVisibility(true)} alt="menu" className="menu" />)}
     <div className="navbar-items">
+    <a onClick={() => setactive("Home")} className={active == "Home"?"active":'links'} href="#content">Home</a>
     <a onClick={() => setactive("About")} className={active == "About"?"active":'links'} href="#about">About</a>
     <a onClick={() => setactive("Services")} className={active == "Services"?"active":'links'} href="#services">Services</a>
     <a onClick={() => setactive("Projects")}  className={active == "Projects"?"active":'links'} href="#projects">Projects</a>
     <a onClick={() => setactive("Contact")} className={active == "Contact"?"active":'links'} href="#footer">Contact</a>
     </div>
     </div>
-    <div className="content">
+    <div className="content" id='content'>
     <span className="content-text">WE ARE CREATIVES</span>
     <img src={arrow} alt="" className="arrow" />
     </div>
